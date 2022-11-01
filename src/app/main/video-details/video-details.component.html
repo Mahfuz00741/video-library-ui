@@ -1,0 +1,42 @@
+<div class="w-full">
+  <mat-card>
+    <div class="grid grid-cols-2 gap-3 p-2">
+      <mat-card class="w-full">
+        <iframe class="w-full" style="height: 400px" [src]="video?.videoUrl | safe"></iframe>
+        <div class="flex justify-between items-center" style="margin-top: 19px">
+          <div>{{video?.totalView}} Views</div>
+          <div>
+            <div class="flex justify-between items-center space-x-6" style="margin-right: 10px">
+                <mat-icon (click)="reactVideoById('like')" class="text-green-500 cursor-pointer">thumb_up</mat-icon>
+                <mat-icon (click)="reactVideoById('disLike')" class="text-red-500 cursor-pointer">thumb_down</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="right-10" style="margin-top: 17px">
+          <div class="flex justify-end items-center space-x-6">
+            <div style="color: green; font-weight: bold">Total Likes <span>{{video?.totalLike}}</span></div>
+            <div style="color: brown; font-weight: bold">Total Dislike <span>{{video?.totalDislike}}</span></div>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="w-full" style="background: gainsboro">
+        <div class="w-full flex justify-center items-center">
+          <div>Uploaded By <span style="color: coral; font-weight: bold">{{video?.uploader.fullName}}</span></div>
+        </div>
+        <div style="margin-top: 15px; width: 100%; border-bottom: 1px solid; color: blueviolet; font-size: 18px"
+             class="text-center">
+          <div>Like and Dislike By</div>
+        </div>
+        <div>
+          <ng-container *ngFor="let react of reactList">
+            <div *ngIf="react?.isLike || react?.isDisLike" class="flex justify-center items-center space-x-6" style="margin-top: 17px">
+              <div>{{react?.user?.fullName}}</div>
+              <mat-icon *ngIf="react?.isLike" class="text-green-500">thumb_up</mat-icon>
+              <mat-icon *ngIf="react?.isDisLike" class="text-red-500">thumb_down</mat-icon>
+            </div>
+          </ng-container>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

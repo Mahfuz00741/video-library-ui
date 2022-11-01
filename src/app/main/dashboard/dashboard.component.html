@@ -1,1 +1,39 @@
-<p>dashboard works!</p>
+<div class="w-full">
+  <mat-card>
+    <div class="w-full">
+      <form [formGroup]="formGroup" (ngSubmit)="createVideo()">
+        <div class="flex justify-center items-center space-x-6" style="margin-left: 50px">
+          <div style="padding-bottom: 6px;">
+            Youtube Video Url <span style="color: red">*</span>
+          </div>
+          <mat-form-field style="width: 400px" appearance="fill">
+            <mat-label>Enter your video Url</mat-label>
+            <input placeholder="Video Url" matInput formControlName="videoUrl">
+          </mat-form-field>
+          <button style="margin-bottom: 19px; padding-left: 25px; padding-right: 25px; background: blueviolet;"
+                  class="btn" type="submit">Share
+          </button>
+        </div>
+      </form>
+    </div>
+    <div style="margin-bottom: 25px" class="grid grid-cols-4 gap-3 p-4">
+    </div>
+    <div style="background: gainsboro" class="grid grid-cols-4 gap-3 p-4">
+      <ng-container *ngFor="let video of videoList">
+        <div (click)="btnClick(video.id)" class="w-full flex justify-center items-center bg-green-200 cursor-pointer truncate">
+          {{video?.videoUrl}}
+        </div>
+      </ng-container>
+
+      <!--<div class="w-full flex justify-center items-center bg-green-200 cursor-pointer">
+        https://www.youtube.com/embed/es4x5R-rV9s
+      </div>
+      <div class="w-full flex justify-center items-center bg-green-200 cursor-pointer">
+        https://www.youtube.com/embed/es4x5R-rV9s
+      </div>
+      <div class="w-full flex justify-center items-center bg-green-200 cursor-pointer">
+        https://www.youtube.com/embed/es4x5R-rV9s
+      </div>-->
+    </div>
+  </mat-card>
+</div>
