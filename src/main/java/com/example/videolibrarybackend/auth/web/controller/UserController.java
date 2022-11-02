@@ -17,14 +17,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(path = "user/create")
+    @PostMapping(path = "create")
     public User saveUser(@RequestBody AuthRequestDto dto) {
         return userService.saveUser(dto);
     }
 
-    @PostMapping(path = "login-user")
-    public ResponseEntity<?> loginUser(@RequestBody AuthRequestDto dto) throws Exception {
-        return userService.loginUser(dto);
-    }
 
 }

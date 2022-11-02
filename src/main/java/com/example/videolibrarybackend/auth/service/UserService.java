@@ -7,6 +7,5 @@ import org.springframework.http.ResponseEntity;
 public interface UserService {
 
     User saveUser(AuthRequestDto dto);
-    ResponseEntity<?> loginUser(AuthRequestDto dto) throws Exception;
 
 }
