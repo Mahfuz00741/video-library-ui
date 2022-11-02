@@ -1,8 +1,7 @@
 package com.example.videolibrarybackend.auth.web.dto.response;
 
-import com.example.videolibrarybackend.auth.model.domain.User;
+import com.example.videolibrarybackend.auth.model.domain.UserTable;
 import com.example.videolibrarybackend.auth.web.dto.BaseEntityDto;
-import com.example.videolibrarybackend.auth.web.dto.response.ReactResponseDto;
 import lombok.Data;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class VideoResponseDto extends BaseEntityDto {
 
     private Long uploaderId;
 
-    private User uploader;
+    private UserTable uploader;
 
     private long totalLike;
 

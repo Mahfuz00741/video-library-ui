@@ -1,6 +1,6 @@
 package com.example.videolibrarybackend.auth.service.implementation;
 
-import com.example.videolibrarybackend.auth.model.domain.User;
+import com.example.videolibrarybackend.auth.model.domain.UserTable;
 import com.example.videolibrarybackend.auth.model.repository.UserRepository;
 import com.example.videolibrarybackend.auth.service.UserService;
 import com.example.videolibrarybackend.auth.web.dto.request.AuthRequestDto;
@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public User saveUser(AuthRequestDto dto) {
-        User user = new User();
+    public UserTable saveUser(AuthRequestDto dto) {
+        UserTable user = new UserTable();
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         BeanUtils.copyProperties(dto, user);
         userRepository.save(user);

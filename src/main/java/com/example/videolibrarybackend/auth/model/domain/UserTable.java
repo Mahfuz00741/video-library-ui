@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "USER_TBL")
-public class User extends BaseEntity {
+public class UserTable extends BaseEntity {
 
     @Column(unique = true)
     private String email;

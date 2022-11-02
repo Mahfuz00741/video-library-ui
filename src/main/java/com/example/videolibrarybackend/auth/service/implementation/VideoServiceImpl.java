@@ -1,6 +1,6 @@
 package com.example.videolibrarybackend.auth.service.implementation;
 
-import com.example.videolibrarybackend.auth.model.domain.User;
+import com.example.videolibrarybackend.auth.model.domain.UserTable;
 import com.example.videolibrarybackend.auth.model.repository.UserRepository;
 import com.example.videolibrarybackend.auth.web.dto.response.UserResponseDto;
 import com.example.videolibrarybackend.auth.model.domain.React;
@@ -79,7 +79,7 @@ public class VideoServiceImpl implements VideoService {
 
         for (ReactResponseDto responseDto : dto.getReact()) {
             UserResponseDto dto1 = new UserResponseDto();
-            User user = userRepository.findById(responseDto.getUserId()).get();
+            UserTable user = userRepository.findById(responseDto.getUserId()).get();
             BeanUtils.copyProperties(user, dto1);
             responseDto.setUser(dto1);
         }

@@ -1,14 +1,13 @@
 package com.example.videolibrarybackend.auth.web.controller;
 
 import com.example.videolibrarybackend.annotations.RestApiController;
-import com.example.videolibrarybackend.auth.model.domain.User;
+import com.example.videolibrarybackend.auth.model.domain.UserTable;
 import com.example.videolibrarybackend.auth.service.UserService;
 import com.example.videolibrarybackend.auth.service.implementation.CustomUserDetailsService;
 import com.example.videolibrarybackend.auth.utility.JwtUtility;
 import com.example.videolibrarybackend.auth.web.dto.request.AuthRequestDto;
 import com.example.videolibrarybackend.auth.web.dto.response.AuthResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,7 +33,7 @@ public class UserController {
     private CustomUserDetailsService customUserDetailsService;
 
     @PostMapping(path = "create")
-    public User saveUser(@RequestBody AuthRequestDto dto) {
+    public UserTable saveUser(@RequestBody AuthRequestDto dto) {
         return userService.saveUser(dto);
     }
 
@@ -43,7 +42,7 @@ public class UserController {
     public AuthResponse getToken(@RequestBody AuthRequestDto dto) throws Exception{
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    dto.getUserName(), dto.getPassword()
+                    String.valueOf(dto.getUserName()), String.valueOf(dto.getPassword())
             ));
         } catch (BadCredentialsException e) {
             throw  new Exception("error");
