@@ -1,7 +1,7 @@
-package com.example.videolibrarybackend.web.dto.response;
+package com.example.videolibrarybackend.auth.web.dto.response;
 
 import com.example.videolibrarybackend.auth.web.dto.response.UserResponseDto;
-import com.example.videolibrarybackend.web.dto.BaseEntityDto;
+import com.example.videolibrarybackend.auth.web.dto.BaseEntityDto;
 import lombok.Data;
 
 @Data

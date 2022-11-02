@@ -1,22 +1,26 @@
 package com.example.videolibrarybackend.auth.model.domain;
 
-import com.example.videolibrarybackend.model.domain.BaseEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
 @Data
-@Table(name = "USER_TABLE")
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "USER_TBL")
 public class User extends BaseEntity {
 
+    @Column(unique = true)
     private String email;
 
     private String password;
 
     private String fullName;
 
-    private String role;
-
+    private String userName;
 }

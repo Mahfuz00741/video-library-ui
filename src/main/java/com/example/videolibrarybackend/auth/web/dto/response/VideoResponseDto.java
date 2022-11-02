@@ -1,7 +1,8 @@
-package com.example.videolibrarybackend.web.dto.response;
+package com.example.videolibrarybackend.auth.web.dto.response;
 
 import com.example.videolibrarybackend.auth.model.domain.User;
-import com.example.videolibrarybackend.web.dto.BaseEntityDto;
+import com.example.videolibrarybackend.auth.web.dto.BaseEntityDto;
+import com.example.videolibrarybackend.auth.web.dto.response.ReactResponseDto;
 import lombok.Data;
 
 import java.util.List;

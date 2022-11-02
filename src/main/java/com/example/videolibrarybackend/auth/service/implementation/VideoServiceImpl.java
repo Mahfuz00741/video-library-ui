@@ -1,17 +1,17 @@
-package com.example.videolibrarybackend.services.implementation;
+package com.example.videolibrarybackend.auth.service.implementation;
 
 import com.example.videolibrarybackend.auth.model.domain.User;
 import com.example.videolibrarybackend.auth.model.repository.UserRepository;
 import com.example.videolibrarybackend.auth.web.dto.response.UserResponseDto;
-import com.example.videolibrarybackend.model.domain.React;
-import com.example.videolibrarybackend.model.domain.Video;
-import com.example.videolibrarybackend.model.repositories.ReactRepository;
-import com.example.videolibrarybackend.model.repositories.VideoRepository;
-import com.example.videolibrarybackend.services.VideoService;
-import com.example.videolibrarybackend.web.dto.request.ReactRequestDto;
-import com.example.videolibrarybackend.web.dto.request.VideoRequestDto;
-import com.example.videolibrarybackend.web.dto.response.ReactResponseDto;
-import com.example.videolibrarybackend.web.dto.response.VideoResponseDto;
+import com.example.videolibrarybackend.auth.model.domain.React;
+import com.example.videolibrarybackend.auth.model.domain.Video;
+import com.example.videolibrarybackend.auth.model.repository.ReactRepository;
+import com.example.videolibrarybackend.auth.model.repository.VideoRepository;
+import com.example.videolibrarybackend.auth.service.VideoService;
+import com.example.videolibrarybackend.auth.web.dto.request.ReactRequestDto;
+import com.example.videolibrarybackend.auth.web.dto.request.VideoRequestDto;
+import com.example.videolibrarybackend.auth.web.dto.response.ReactResponseDto;
+import com.example.videolibrarybackend.auth.web.dto.response.VideoResponseDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -137,6 +137,11 @@ public class VideoServiceImpl implements VideoService {
         Video video = v.get();
         video.setTotalView(video.getTotalView() + 1);
         videoRepository.save(video);
+    }
+
+    @Override
+    public List<Video> getVideoListByUploaderId(Long uploaderId) {
+        return videoRepository.findAllByUploaderIdOrderByUploaderIdAsc(uploaderId);
     }
 
 

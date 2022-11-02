@@ -1,4 +1,4 @@
-package com.example.videolibrarybackend.model.domain;
+package com.example.videolibrarybackend.auth.model.domain;
 
 import lombok.Data;
 

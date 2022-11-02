@@ -1,10 +1,10 @@
 package com.example.videolibrarybackend.auth.web.dto.request;
 
-import com.example.videolibrarybackend.web.dto.BaseEntityDto;
+import com.example.videolibrarybackend.auth.web.dto.BaseEntityDto;
 import lombok.Data;
 
 @Data
-public class UserRequestDto extends BaseEntityDto {
+public class AuthRequestDto extends BaseEntityDto {
 
     private String email;
 
@@ -12,4 +12,5 @@ public class UserRequestDto extends BaseEntityDto {
 
     private String fullName;
 
+    private String userName;
 }

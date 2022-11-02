@@ -1,4 +1,4 @@
-package com.example.videolibrarybackend.web.dto;
+package com.example.videolibrarybackend.auth.web.dto;
 
 import lombok.Data;
 
