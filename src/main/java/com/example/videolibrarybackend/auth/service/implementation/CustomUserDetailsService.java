@@ -17,6 +17,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         // get user from database.
 
 
-        return new User("admin", "password", new ArrayList<>());
+        return new User("admi", "password", new ArrayList<>());
     }
 }

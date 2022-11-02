@@ -3,8 +3,10 @@ package com.example.videolibrarybackend.auth.web.controller;
 import com.example.videolibrarybackend.annotations.RestApiController;
 import com.example.videolibrarybackend.auth.model.domain.Video;
 import com.example.videolibrarybackend.auth.service.VideoService;
+import com.example.videolibrarybackend.auth.web.dto.request.AuthRequestDto;
 import com.example.videolibrarybackend.auth.web.dto.request.ReactRequestDto;
 import com.example.videolibrarybackend.auth.web.dto.request.VideoRequestDto;
+import com.example.videolibrarybackend.auth.web.dto.response.AuthResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +33,7 @@ public class AuthController {
     public List<Video> getListByUploaderId(@PathVariable Long uploaderId) {
         return videoService.getVideoListByUploaderId(uploaderId);
     }
+
+
 
 }
