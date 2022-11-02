@@ -1,0 +1,27 @@
+<div class="w-full">
+  <div class="flex justify-center items-center">
+    <div [formGroup]="formGroup" class="w-full itmes-center" style="height: 300px; width: 300px; background: beige">
+      <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold">
+        Sign Up Form
+      </div>
+      <div>
+        <mat-form-field>
+          <input formControlName="email" matInput placeholder="Enter your Email">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input formControlName="password" type="password" matInput placeholder="Enter your password">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input formControlName="fullName" matInput placeholder="Enter your Full Name">
+        </mat-form-field>
+      </div>
+      <button (click)="createUser()" style="margin-bottom: 19px; padding-left: 25px; padding-right: 25px; background: blueviolet;"
+              class="btn" type="submit">Submit
+      </button>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,13 @@
     <div class="w-full">
       <form [formGroup]="formGroup" (ngSubmit)="createVideo()">
         <div class="flex justify-center items-center space-x-6" style="margin-left: 50px">
-          <div style="padding-bottom: 6px;">
+          <mat-form-field>
+            <mat-select (selectionChange)="getVideo($event.value)" placeholder="Select">
+              <mat-option value="all">All Video</mat-option>
+              <mat-option value="filter">Uploaded By Me</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div style="padding-bottom: 6px; margin-left: 25px">
             Youtube Video Url <span style="color: red">*</span>
           </div>
           <mat-form-field style="width: 400px" appearance="fill">

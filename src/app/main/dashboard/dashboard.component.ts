@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   intiForm() {
     this.formGroup = this.formBuilder.group({
       videoUrl: ['', [Validators.required]],
-      uploaderId: [1],
+      uploaderId: [33],
       totalView: [0],
       react: []
     })
@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
   createVideo() {
     this.videoLibraryService.createVideo(this.formGroup.value).subscribe(res => {
       this.getVideoList();
+      this.formGroup.reset();
     })
   }
 
@@ -54,4 +55,18 @@ export class DashboardComponent implements OnInit {
     this.videoLibraryService.videoViewIncrease(videoId).subscribe()
   }
 
+
+  getVideo(value) {
+    if (value == 'all') {
+      this.getVideoList();
+    } else {
+      this.filterVideoList();
+    }
+  }
+
+  private filterVideoList() {
+    this.videoLibraryService.getListByUploaderId(33).subscribe(res => {
+      this.videoList = res;
+    })
+  }
 }

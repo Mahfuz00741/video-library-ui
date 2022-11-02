@@ -7,8 +7,10 @@
           <div>{{video?.totalView}} Views</div>
           <div>
             <div class="flex justify-between items-center space-x-6" style="margin-right: 10px">
-                <mat-icon (click)="reactVideoById('like')" class="text-green-500 cursor-pointer">thumb_up</mat-icon>
-                <mat-icon (click)="reactVideoById('disLike')" class="text-red-500 cursor-pointer">thumb_down</mat-icon>
+                <mat-icon *ngIf="!isLike" (click)="reactVideoById('like')" class="text-gray-500 cursor-pointer">thumb_up</mat-icon>
+                <mat-icon *ngIf="isLike" (click)="reactVideoById('like')" class="text-green-500 cursor-pointer">thumb_up</mat-icon>
+                <mat-icon *ngIf="!isDislike" (click)="reactVideoById('disLike')" class="text-gray-500 cursor-pointer">thumb_down</mat-icon>
+                <mat-icon *ngIf="isDislike" (click)="reactVideoById('disLike')" class="text-red-500 cursor-pointer">thumb_down</mat-icon>
             </div>
           </div>
         </div>

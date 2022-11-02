@@ -11,9 +11,10 @@ export class VideoDetailsComponent implements OnInit {
 
   videoId: any;
   video: any;
+  isLike: boolean = false;
+  isDislike: boolean = false;
 
   reactModel: any = {};
-  isVideo: boolean = false;
   reactList: any[] = [];
 
   constructor(
@@ -28,21 +29,28 @@ export class VideoDetailsComponent implements OnInit {
   }
 
   findOneVideo() {
-    this.isVideo = false;
+    this.isLike = false;
+    this.isDislike = false;
     this.reactList = [];
     this.videoLibraryService.findOneVideo(this.videoId).subscribe(res => {
       console.log(res);
       this.video = res;
       if (res.react.length > 0) {
         this.reactList = res.react;
+        let findReactor = this.reactList.find(f => f.userId == 2);
+        if (findReactor.isLike) {
+          this.isLike = true;
+        }
+        if (findReactor.isDisLike) {
+          this.isDislike = true;
+        }
       }
-      this.isVideo = true;
     })
   }
 
   reactVideoById(reactType) {
     this.reactModel.reactType = reactType;
-    this.videoLibraryService.reactVideoById(this.videoId, 1, this.reactModel).subscribe(res =>{
+    this.videoLibraryService.reactVideoById(this.videoId, 32, this.reactModel).subscribe(res =>{
       this.findOneVideo();
     });
   }

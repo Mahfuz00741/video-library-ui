@@ -14,13 +14,17 @@ import {MatInputModule} from "@angular/material/input";
 import {HttpClientModule} from "@angular/common/http";
 import { SafePipe } from './safe.pipe';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import { SignUpComponent } from './main/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     VideoDetailsComponent,
-    SafePipe
+    SafePipe,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     HttpClientModule,
     MatDialogModule,
     FormsModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
