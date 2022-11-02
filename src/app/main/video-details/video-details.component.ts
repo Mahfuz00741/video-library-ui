@@ -37,7 +37,7 @@ export class VideoDetailsComponent implements OnInit {
       this.video = res;
       if (res.react.length > 0) {
         this.reactList = res.react;
-        let findReactor = this.reactList.find(f => f.userId == 2);
+        let findReactor = this.reactList.find(f => f.userId == 44);
         if (findReactor.isLike) {
           this.isLike = true;
         }
@@ -50,7 +50,7 @@ export class VideoDetailsComponent implements OnInit {
 
   reactVideoById(reactType) {
     this.reactModel.reactType = reactType;
-    this.videoLibraryService.reactVideoById(this.videoId, 32, this.reactModel).subscribe(res =>{
+    this.videoLibraryService.reactVideoById(this.videoId, 44, this.reactModel).subscribe(res =>{
       this.findOneVideo();
     });
   }
