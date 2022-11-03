@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {VideoLibraryService} from "../service/video-library.service";
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-video-details',
@@ -16,6 +17,8 @@ export class VideoDetailsComponent implements OnInit {
 
   reactModel: any = {};
   reactList: any[] = [];
+  userId: any;
+  isLogged: boolean = false;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -26,6 +29,7 @@ export class VideoDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.findOneVideo();
+    this.getUserId();
   }
 
   findOneVideo() {
@@ -37,7 +41,7 @@ export class VideoDetailsComponent implements OnInit {
       this.video = res;
       if (res.react.length > 0) {
         this.reactList = res.react;
-        let findReactor = this.reactList.find(f => f.userId == 44);
+        let findReactor = this.reactList.find(f => f.userId == this.userId);
         if (findReactor.isLike) {
           this.isLike = true;
         }
@@ -50,9 +54,22 @@ export class VideoDetailsComponent implements OnInit {
 
   reactVideoById(reactType) {
     this.reactModel.reactType = reactType;
-    this.videoLibraryService.reactVideoById(this.videoId, 44, this.reactModel).subscribe(res =>{
+    this.videoLibraryService.reactVideoById(this.videoId, this.userId, this.reactModel).subscribe(res =>{
       this.findOneVideo();
     });
+  }
+
+  getUserId() {
+    this.isLogged = false;
+    if (sessionStorage.getItem('token') != null) {
+      let token = sessionStorage.getItem('token');
+      let decoded: any = jwt_decode(token);
+      this.videoLibraryService.getByEmail(decoded.sub).subscribe(res => {
+        this.userId = res.id;
+        console.log(this.userId)
+        this.isLogged = true;
+      })
+    }
   }
 
 }

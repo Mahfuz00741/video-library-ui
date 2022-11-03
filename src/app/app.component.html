@@ -8,8 +8,10 @@
         <div class="btn">
           <a routerLink="sign-up" class="btn">Signup</a>
         </div>
-        <div class="btn">Login</div>
-        <div class="btn">Logout</div>
+        <div class="btn">
+          <a routerLink="login" class="btn">Login</a>
+        </div>
+        <div (click)="logOut()" class="btn">Logout</div>
       </div>
     </div>
   </mat-card>

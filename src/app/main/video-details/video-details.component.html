@@ -3,7 +3,7 @@
     <div class="grid grid-cols-2 gap-3 p-2">
       <mat-card class="w-full">
         <iframe class="w-full" style="height: 400px" [src]="video?.videoUrl | safe"></iframe>
-        <div class="flex justify-between items-center" style="margin-top: 19px">
+        <div class="flex justify-between items-center" *ngIf="isLogged" style="margin-top: 19px">
           <div>{{video?.totalView}} Views</div>
           <div>
             <div class="flex justify-between items-center space-x-6" style="margin-right: 10px">

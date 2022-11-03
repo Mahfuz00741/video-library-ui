@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'video-library-ui';
+
+
+  logOut() {
+    sessionStorage.setItem('token', null);
+    window.location.reload();
+  }
+
+
+
 }

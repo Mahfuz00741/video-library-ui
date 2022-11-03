@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {VideoLibraryService} from "../service/video-library.service";
-import {Route, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class LoginComponent implements OnInit {
   formGroup: FormGroup;
 
   constructor(
@@ -25,14 +25,14 @@ export class SignUpComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       email: [],
       password: [],
-      fullName: [],
     })
   }
 
-  createUser() {
-    this.videoLibraryService.createUser(this.formGroup.value).subscribe(res => {
-      this.router.navigateByUrl('dashboard');
-    });
+  loginUser() {
+    this.videoLibraryService.loginUser(this.formGroup.value).subscribe(res => {
+      this.router.navigate(['dashboard']);
+      sessionStorage.setItem('token',res.token);
+      console.log(res);
+    })
   }
-
 }

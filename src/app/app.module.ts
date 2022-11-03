@@ -17,6 +17,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import { SignUpComponent } from './main/sign-up/sign-up.component';
+import { LoginComponent } from './main/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SignUpComponent } from './main/sign-up/sign-up.component';
     DashboardComponent,
     VideoDetailsComponent,
     SafePipe,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

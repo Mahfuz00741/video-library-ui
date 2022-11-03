@@ -1,6 +1,6 @@
 <div class="w-full">
   <mat-card>
-    <div class="w-full">
+    <div class="w-full" *ngIf="isLogged">
       <form [formGroup]="formGroup" (ngSubmit)="createVideo()">
         <div class="flex justify-center items-center space-x-6" style="margin-left: 50px">
           <mat-form-field>

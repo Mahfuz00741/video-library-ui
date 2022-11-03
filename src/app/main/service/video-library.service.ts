@@ -9,18 +9,22 @@ export class VideoLibraryService {
 
   BASE_URL = "http://localhost:9086/";
   VIDEO_URL = this.BASE_URL + 'api/video/'
-  AUTH_URL = this.BASE_URL + 'auth/'
   USER_URL = this.BASE_URL + 'api/user/'
   constructor(
     private http: HttpClient,
   ) { }
 
   createVideo(data: any): Observable<any> {
-    return this.http.post<any>(this.VIDEO_URL + 'save', data);
+    let headers=new HttpHeaders().set('Authorization','Bearer '+ sessionStorage.getItem('token'));
+    return this.http.post<any>(this.BASE_URL + 'video/save', data, {headers: headers});
   }
 
   createUser(data: any): Observable<any> {
     return this.http.post<any>(this.USER_URL + 'create', data);
+  }
+
+  getByEmail(email: any): Observable<any> {
+    return this.http.get<any>(this.USER_URL + 'get-by-email/' + email);
   }
 
   videoViewIncrease(videoId: number): Observable<any> {
@@ -28,14 +32,12 @@ export class VideoLibraryService {
   }
 
   reactVideoById(videoId: number, userId: number, data: any): Observable<any> {
-    return this.http.post<any>(this.VIDEO_URL + 'react-by-video-and-user-id/' + videoId + '/' + userId, data);
+    let headers=new HttpHeaders().set('Authorization','Bearer '+ sessionStorage.getItem('token'));
+    return this.http.post<any>(this.BASE_URL + 'video/react-by-video-and-user-id/' + videoId + '/' + userId, data, {headers: headers});
   }
 
   getVideoList (): Observable<any> {
-    // sessionStorage.setItem('token','rakib')
-    // let headers=new HttpHeaders().set
-    // ('Authorization','Bearer '+ sessionStorage.getItem('token'));
-    return this.http.get<any>(this.VIDEO_URL + 'get-list' /*,{headers: headers}*/);
+    return this.http.get<any>(this.VIDEO_URL + 'get-list');
   }
 
   findOneVideo (videoId: number): Observable<any> {
@@ -43,7 +45,12 @@ export class VideoLibraryService {
   }
 
   getListByUploaderId (uploaderId: number): Observable<any> {
-    return this.http.get<any>(this.VIDEO_URL + 'get-list-by-uploader-id/' + uploaderId);
+    let headers=new HttpHeaders().set('Authorization','Bearer '+ sessionStorage.getItem('token'));
+    return this.http.get<any>(this.BASE_URL + 'video/get-list-by-uploader-id/' + uploaderId, {headers: headers});
+  }
+
+  loginUser (data: any): Observable<any> {
+    return this.http.post<any>(this.USER_URL + 'token/', data);
   }
 
 }
